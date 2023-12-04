@@ -28,8 +28,10 @@ FROM `exams` <br>
 WHERE `date` = '2020-06-20' <br>
 AND HOUR(`hour`)>=14; <br>
 
-- Selezionare tutti i corsi di laurea magistrale;
-
+- Selezionare tutti i corsi di laurea magistrale; <br>
+SELECT * <br>
+FROM `degrees` <br>
+WHERE `level` = 'magistrale'; <br>
 
 - Da quanti dipartimenti è composta l'università?
 
