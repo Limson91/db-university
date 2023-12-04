@@ -52,7 +52,9 @@ FROM `departments`;
 ```
 
 
-- Quanti sono gli insegnanti che non hanno un numero di telefono? <br>
-SELECT COUNT(*) <br>
-FROM `teachers` <br>
-WHERE `phone` IS NULL; <br>
+- Quanti sono gli insegnanti che non hanno un numero di telefono?
+```
+SELECT COUNT(*)
+FROM `teachers`
+WHERE `phone` IS NULL;
+```
