@@ -71,6 +71,20 @@ WHERE `departments`.`name` = 'dipartimento di matematica'
 ORDER BY `teachers`.`surname`;
 ```
 
-- BONUS: Selezionare per ogni studente il numero di tentativi sostenuti
-per ogni esame, stampando anche il voto massimo. Successivamente,
-filtrare i tentativi con voto minimo 18;
+- BONUS: Selezionare per ogni studente il numero di tentativi sostenuti per ogni esame, stampando anche il voto massimo. 
+Successivamente, filtrare i tentativi con voto minimo 18;
+```MYSQL
+SELECT `students`.`id`, concat(`students`.`surname`, ' ', `students`.`name`) as 'nome_studente', `students`.`registration_number`, `courses`.`id`, `courses`.name, COUNT(*) as 'tentativi', MAX(`exam_student`.`vote`) as 'voto_massimo'
+
+FROM `students`
+
+INNER JOIN `exam_student`
+ON `students`.`id` = `exam_student`.`student_id`
+INNER JOIN `exams`
+ON `exam_student`.`exam_id` = `exams`.`id`
+INNER JOIN `courses`
+ON `exams`.`course_id` = `courses`.`id`
+
+GROUP BY `students`.`id`, `courses`.`id`
+HAVING MAX(`exam_student`.`vote`) >= 18;
+```
