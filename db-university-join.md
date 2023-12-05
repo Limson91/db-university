@@ -1,6 +1,13 @@
 # db-university Join
 
 - Selezionare tutti gli studenti iscritti al Corso di Laurea in Economia;
+```MYSQL
+SELECT `students`.`name`, `students`.`surname`, `degrees`.`name`
+FROM `degrees`
+INNER JOIN `students`
+ON `students`.`degree_id` = `degrees`.`id`
+WHERE `degrees`.`name` = 'corso di laurea in economia';
+```
 
 - Selezionare tutti i Corsi di Laurea Magistrale del Dipartimento di Neuroscienze;
 
