@@ -20,6 +20,16 @@ AND `degrees`.`level` = 'magistrale';
 ```
 
 - Selezionare tutti i corsi in cui insegna Fulvio Amato (id=44);
+```MYSQL
+SELECT `courses`.*, `teachers`.`name`, `teachers`.`surname`
+FROM `courses`
+INNER JOIN `course_teacher`
+ON `courses`.`id` = `course_teacher`.`course_id`
+INNER JOIN `teachers`
+ON `course_teacher`.`teacher_id` = `teachers`.`id`
+WHERE `teachers`.`name` = 'Fulvio'
+AND `teachers`.`surname` = 'Amato';
+```
 
 - Selezionare tutti gli studenti con i dati relativi al corso di laurea a cui sono iscritti e al relativo dipartimento, in ordine alfabetico per cognome e nome;
 
